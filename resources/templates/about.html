@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+{% trans %}folderlinks: organize your links and webapps{% endtrans %}
+{% endblock %}
+
+{% block body %}
+<div class="page">
+	<h1>
+		<a href="{{ url_for('about') }}">{% trans %}about: {% endtrans
+			%}folderlinks.com</a>
+	</h1>
+
+	<h2 class="subtitle">{% trans %}Simple web dashboard{% endtrans %}</h2>
+	<p>
+		{% trans url_index=url_for('index') %}<a href="{{url_index}}">Folderlinks</a> is a simple dashboard to manage, organize and share your favorite urls and web applications.{% endtrans %}
+		{% trans url_latest=url_for('latest') %}You can <a href="{{ url_latest }}">search existing applications</a>, created by you or other users, and install them in your dashboard.{% endtrans %}
+		{% trans %}Organize your applications in folders and drag and drop your installed applications. You will be able to access your dashboard with any html5 browser.{% endtrans %}
+	</p>
+
+    <h2 class="subtitle">{% trans %}Folderlinks features{% endtrans %}</h2>
+    <p>
+        <ul>
+            <li><strong> <a href="{{ url_for('main') }}">
+                 {% trans %}Organize in folders:{% endtrans %}</a></strong> {% trans %}Create folders and drag and drop applications on them.{% endtrans %}
+            </li>
+            
+            <li><strong><a href="{{ url_for('main') }}">
+                 {% trans %}Find your links quickly:{% endtrans %}</a></strong>
+                 {% trans %}Start typing and you will get a list of your links that match your search.{% endtrans %}
+            </li>
+                
+            <li><strong> <a href="{{ url_for('login') }}">
+                 {% trans %}Sign in:{% endtrans %}</a></strong> {% trans %}Using your{% endtrans %}
+                <a href="{{ url_for('login') }}">{% trans %}google, twitter or facebook account{% endtrans %}</a>.
+            </li>
+            
+            <li><strong><a href="{{ url_for('main') }}">
+                 {% trans %}Find and install existing applications:{% endtrans %}</a></strong> 
+                 {% trans %}Search existing web applications that other users have registered and install them in your dashboard.{% endtrans %}
+            </li>
+            
+            <li><strong><a href="{{ url_for('main') }}">
+                 {% trans %}Register new web applications:{% endtrans %}</a></strong>
+                 {% trans %}If you can't find an application, you only need the applications url to register and install it in your dashboard.{% endtrans %}
+            </li>
+            
+            <li><strong><a href="{{ url_for('main') }}">
+                 {% trans %}Import links from your browser:{% endtrans %}</a></strong>
+                 {% trans %}You can import your browser links on folderlinks.{% endtrans %}
+            </li>
+            
+            <li><strong><a href="{{ url_for('main') }}">
+                 {% trans %}Compatible with any html5 browser:{% endtrans %}</a></strong>
+                 {% trans %}Folderlinks does not depend on specific browser plugins or extensions. Use any html5 browser you like.{% endtrans %}
+            </li>
+        </ul>
+    </p>
+
+	<h2>
+		<a href="{{ url_for('login') }}">{% trans %}Try it now!{% endtrans %}</a>
+	</h2>
+	<p>
+		{% trans url_login=url_for('login') %}You don't have to create a new account, try this application signing in with your <a href="{{ url_login }}">google, twitter or facebook account</a>.{% endtrans %}
+	</p>
+
+    <h2>{% trans %}Icons{% endtrans %}</h2>
+    <p>
+        {% trans %}The icons used on this applications are under creative commons licenses. The icons used are from the following authors:{% endtrans %}
+        <ul>
+            <li><a href="https://www.fatcow.com/free-icons">free icons</a> by fatcow</li>
+            <li><a href="http://p.yusukekamiyamane.com/">fugue icons</a> by Yusuke Kamiyamane</li>
+            <li><a href="http://www.famfamfam.com/lab/icons/silk/">silk icons</a> by famfamfam</li>
+            
+        </ul>
+    </p>
+    
+    <h2>{% trans %}Contact{% endtrans %}</h2>
+    <p>
+        {% trans %}This application is created by <a href="http://nuno-pereira.com">Nu&ntilde;o Pereira</a>.{% endtrans %}
+        {% trans %}You can get more information in my <a href="http://es-robot.com">blog</a>.{% endtrans %} {% trans %}(<a href="http://translate.google.com/translate?hl=es&ie=UTF-8&sl=es&tl=en&u=http://es-robot.com/">english traslation by google translate</a>){% endtrans %}
+    </p>
+    
+	<p>&nbsp;</p>
+</div>
+
+{% endblock %}
+

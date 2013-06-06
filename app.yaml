@@ -1,8 +1,37 @@
 application: anguine
 version: 1
-runtime: python
+runtime: python27
 api_version: 1
+default_expiration: "7d"
+threadsafe: true
 
 handlers:
+- url: /css
+  static_dir: resources/css
+  expiration: "7d"
+
+- url: /images
+  static_dir: resources/img
+  expiration: "7d"
+  
+- url: /js
+  static_dir: resources/js
+  expiration: "7d"
+
+- url: /favicon.ico
+  static_files: resources/images/favicon.ico
+  upload: resources/images/favicon.ico
+  mime_type: image/x-icon
+
+- url: /robots.txt
+  static_files: resources/robots.txt
+  upload: resources/robots.txt
+  mime_type: text/plain
+
 - url: /.*
-  script: anguine.py
+  script: main.application
+
+libraries:
+- name: jinja2
+  version: latest
+ 

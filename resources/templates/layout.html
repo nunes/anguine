@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html ng-app>
+
+<head>
+<title>{{title}}</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+	{%block document%}
+	   
+	   {% block header %}
+		<div class="navbar navbar-inverse navbar-fixed-top">
+		
+		  <div class="navbar-inner">
+		
+		    <div class="container">
+		
+		      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+		      </button>
+		
+		      <a class="brand" href="/">Ciberialabs</a>
+		
+		      <div class="nav-collapse collapse">
+		        <ul class="nav">
+		          <li><a href="/">Home</a></li>
+		          {% if user %}
+		          <li><a href="/main">Web wallet</a></li>
+		          {% endif %}
+		          <li><a href="/about">About</a></li>
+		          <li><a href="/contact">Contact</a></li>
+		        </ul>
+		      </div>
+		      <!--/.nav-collapse -->
+		
+		      <div class="nav-collapse collapse pull-right">
+		        <ul class="nav">
+		          <li>
+		            {% if user %}
+		            <a href="[[.url]]">Login</a>
+		            {% else %}
+		            <a href="[[.url]]">Logout</a>
+		            {% endif %}
+		          </li>
+		        </ul>
+		      </div>
+		
+		    </div>
+		
+		  </div>
+		
+		</div>
+	   {% endblock %}
+
+	<div class="container">
+	   {% block body %}
+	   {% endblock %}
+	   
+       {% block footer %}
+		<footer>
+		  <p>&copy; Webwallet 2013</p>
+		</footer>
+       {% endblock %}
+	</div>
+
+	{%endblock%}
+
+	<!-- JS LIBS -->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+
+	<!-- MAIN JS -->
+	<script type="text/javascript" src="/js/main.js"></script>
+
+</body>
+
+</html>

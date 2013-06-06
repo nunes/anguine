@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+{% trans %}folderlinks: organize your links and webapps{% endtrans %}
+{% endblock %}
+
+{% block body %}
+<div class="page home_page">
+	<div class="home_left_column">
+		<h1>
+			<a href="{{ url_for('index') }}">folderlinks</a>
+		</h1>
+
+		<h2>{% trans %}Organize your favorite links and web applications in folders.{% endtrans %}</h2>
+		<p>{% trans %}Save your links on folderlinks and you will have them anywhere you have a web browser.{% endtrans %}</p>
+
+		<ul>
+            <li><strong> <a href="{{ url_for('main') }}">
+                 {% trans %}Organize in folders:{% endtrans %}</a></strong> {% trans %}Create folders and drag and drop applications on them.{% endtrans %}
+            </li>
+            
+            <li><strong><a href="{{ url_for('main') }}">
+                 {% trans %}Find your links quickly:{% endtrans %}</a></strong>
+                 {% trans %}Start typing and you will get a list of your links that match your search.{% endtrans %}
+            </li>
+                
+            <li><strong> <a href="{{ url_for('login') }}">
+                 {% trans %}Sign in:{% endtrans %}</a></strong> {% trans %}Using your{% endtrans %}
+                <a href="{{ url_for('login') }}">{% trans %}google or facebook account{% endtrans %}</a>.
+            </li>
+            
+			<li><strong><a href="{{ url_for('main') }}">
+			     {% trans %}Find and install existing applications:{% endtrans %}</a></strong> 
+			     {% trans %}Search existing web applications that other users have registered and install them in your dashboard.{% endtrans %}
+	        </li>
+	        
+			<li><strong><a href="{{ url_for('main') }}">
+			     {% trans %}Register new web applications:{% endtrans %}</a></strong>
+			     {% trans %}If you can't find an application, you only need the applications url to register and install it in your dashboard.{% endtrans %}
+	        </li>
+	        
+            <li><strong><a href="{{ url_for('main') }}">
+                 {% trans %}Import links from your browser:{% endtrans %}</a></strong>
+                 {% trans %}You can import your browser links on folderlinks.{% endtrans %}
+            </li>
+            
+            <li><strong><a href="{{ url_for('main') }}">
+                 {% trans %}Compatible with any html5 browser:{% endtrans %}</a></strong>
+                 {% trans %}Folderlinks does not depend on specific browser plugins or extensions. Use any html5 browser you like.{% endtrans %}
+            </li>
+		</ul>
+
+        <br/>
+        
+        <h1>
+            <a id="loginUrl" href="{{ url_for('login') }}">{% trans %}try it now{% endtrans %}</a>
+        </h1>
+
+	</div>
+
+	<div class="home_right_column">
+		<img alt="desktop example" src="/images/desktop_example.png"></img> <a
+			id="loginButton" class="indexLoginButton"
+			href="{{ url_for('login') }}">{% trans %}Sign in or Register{% endtrans %}</a>
+	</div>
+
+</div>
+
+<div id="loginContainer" class="formholder" style="display: none;">
+	<form id="loginForm" class="uniForm">
+		<fieldset>
+			<div class="ctrlHolder">
+				<h1>{% trans %}login{% endtrans %}</h1>
+
+				<p>{% trans %}Login in with you preferred account:{% endtrans %}</p>
+
+
+				<ul class="login">
+					<li><button id="googleLogin2"
+							class="login_button google_logo_64" title="login with google"></button></li>
+				    <!-- 
+					<li><button class="login_button twitter_logo_64" type="button"
+							id="twitterLogin2" title="login with twitter"></button></li>
+					 -->
+					<li class="loginScreenFB"><button
+							class="login_button facebook_logo_64" type="button"
+							title="login with facebook"></button></li>
+				</ul>
+			</div>
+
+			<div class="buttonHolder">
+				<button type="button" class="primaryAction" id="closeLogin">{% trans %}Close{% endtrans %}</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+{% endblock %}
+
