@@ -50,6 +50,15 @@ class About(TemplateView):
         return {'script': False}
 
 
+class Contact(TemplateView):
+    """
+    Contact screen
+    """
+    urls = ['/contact']
+    def view(self):
+        return {'script': False}
+
+
 class Sitemap(TemplateView):
     """
     Generate Sitemap.xml

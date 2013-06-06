@@ -29,13 +29,12 @@
 		        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 		      </button>
 		
-		      <a class="brand" href="/">Ciberialabs</a>
+		      <a class="brand" href="/">Anguine</a>
 		
 		      <div class="nav-collapse collapse">
 		        <ul class="nav">
-		          <li><a href="/">Home</a></li>
 		          {% if user %}
-		          <li><a href="/main">Web wallet</a></li>
+		          <li><a href="/main">Main</a></li>
 		          {% endif %}
 		          <li><a href="/about">About</a></li>
 		          <li><a href="/contact">Contact</a></li>
@@ -46,10 +45,10 @@
 		      <div class="nav-collapse collapse pull-right">
 		        <ul class="nav">
 		          <li>
-		            {% if user %}
-		            <a href="[[.url]]">Login</a>
+		            {% if not user %}
+		            <a href="{{url}}">Login</a>
 		            {% else %}
-		            <a href="[[.url]]">Logout</a>
+		            <a href="{{url}}">Logout</a>
 		            {% endif %}
 		          </li>
 		        </ul>
@@ -68,7 +67,7 @@
 	   
        {% block footer %}
 		<footer>
-		  <p>&copy; Webwallet 2013</p>
+		  <p>&copy; Anguine application template 2013</p>
 		</footer>
        {% endblock %}
 	</div>
@@ -80,10 +79,14 @@
 		src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script
 		src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/lib/bootstrap.min.js"></script>
 
-	<!-- MAIN JS -->
-	<script type="text/javascript" src="/js/main.js"></script>
+	<!-- APP GLOBAL JS -->
+	<script type="text/javascript" src="/js/global.js"></script>
+	
+	{% if script %}
+	<script type="text/javascript" src="{{ url_for('js', file=script)}}"></script>
+	{% endif %}
 
 </body>
 

@@ -10,7 +10,7 @@ handlers:
   static_dir: resources/css
   expiration: "7d"
 
-- url: /images
+- url: /img
   static_dir: resources/img
   expiration: "7d"
   
@@ -19,8 +19,8 @@ handlers:
   expiration: "7d"
 
 - url: /favicon.ico
-  static_files: resources/images/favicon.ico
-  upload: resources/images/favicon.ico
+  static_files: resources/img/favicon.ico
+  upload: resources/img/favicon.ico
   mime_type: image/x-icon
 
 - url: /robots.txt
