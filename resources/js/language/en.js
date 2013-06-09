@@ -1,4 +1,4 @@
 _L = {
-'language': 'en',
-		
+	'language' : 'en',
+
 }

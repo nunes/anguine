@@ -1,46 +1,45 @@
 function MainCtrl($scope) {
 
-	var addresses = $scope.addresses = [];
+	var tasks = $scope.tasks = [];
 
-	$scope.newBtcAddress = '';
-	$scope.newBtcLabel = '';
-	$scope.removeBtcAddress = '';
+	$scope.newTask = '';
+	$scope.newTaskLabel = '';
+	$scope.removeTask = '';
 
-	$scope.addressCount = $scope.addresses.length;
+	$scope.taskCount = $scope.tasks.length;
 
-	$scope.$watch('addresses', function() {
-		$scope.addressCount = $scope.addresses.length;
-		console.log($scope.addressCount);
+	$scope.$watch('tasks', function() {
+		$scope.taskCount = $scope.tasks.length;
 	}, true);
 
-	$scope.addBtcAddress = function() {
-		var newBtcAddress = $scope.newBtcAddress.trim();
-		if (!newBtcAddress.length) {
+	$scope.addTask = function() {
+		var newTask = $scope.newTask.trim();
+		if (!newTask.length) {
 			return;
 		}
 
-		var newBtcLabel = $scope.newBtcLabel.trim();
+		var newTaskLabel = $scope.newTaskLabel.trim();
 
-		addresses.push({
-			name : newBtcAddress,
-			label : newBtcLabel
+		tasks.push({
+			description : newTask,
+			label : newTaskLabel
 		});
 
-		$scope.newBtcAddress = '';
-		$scope.newBtcLabel = '';
+		$scope.newTask = '';
+		$scope.newTaskLabel = '';
 
-		$('#addBtcAddressModal').modal('hide');
+		$('#addTaskModal').modal('hide');
 
 	};
 
-	$scope.confirmRemoveBtcAddress = function() {
-		addresses.splice(addresses.indexOf($scope.removeBtcAddress), 1);
-		$('#deleteBtcAddressModal').modal('hide');
+	$scope.confirmRemoveTask = function() {
+		tasks.splice(tasks.indexOf($scope.removeTask), 1);
+		$('#deleteTaskModal').modal('hide');
 
 	}
 
-	$scope.openRemoveBtcAddress = function(address) {
-		$scope.removeBtcAddress = address;
+	$scope.openRemoveTask = function(task) {
+		$scope.removeTask = task;
 	}
 
 }
