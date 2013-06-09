@@ -1,43 +1,35 @@
 # -*- coding: utf-8 -*-
 """
-    simpleMVC
+    anguine mvc
     ~~~~~~~~~
-    Template for random-inspiration application
+    Simple python app engine mvc framework
 
-    :copyright: (c) 2011 by Nuño Pereira
+    :copyright: (c) 2013 by Nuño Pereira
 """
+from anguine.applicationEvents import ON_USER_CREATED, ON_APP_START, ON_RENDER
+from anguine.anguineConstants import FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, \
+    TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET_KEY
+from functools import wraps
+from google.appengine.api import channel, users
+from google.appengine.ext import db
+from google.appengine.runtime.apiproxy_errors import ApplicationError
+from jinja2 import Environment, FileSystemLoader, contextfunction
+from os import path
+from werkzeug.exceptions import HTTPException, MethodNotAllowed, NotImplemented, \
+    NotFound
+from werkzeug.local import Local
+from werkzeug.routing import Map, Rule
+from werkzeug.utils import redirect
+from werkzeug.wrappers import BaseRequest, AcceptMixin, BaseResponse
+import datetime
+import hashlib
+import inspect
+import json
+import logging
 import re
 import sys
-import logging
-import inspect
-
-from os import path
-from functools import wraps
-
-from google.appengine.api import users
-from google.appengine.ext import db
-from google.appengine.api import channel
-
-import json
-
-import hashlib
-
-from werkzeug.exceptions import HTTPException, MethodNotAllowed, NotImplemented, NotFound
-from werkzeug.routing import Map, Rule
-from jinja2 import Environment, FileSystemLoader, contextfunction
-
 import utilModel
 import utilString
-from google.appengine.runtime.apiproxy_errors import ApplicationError
-
-from simpleMVC.simpleMVCConstants import (FACEBOOK_APP_ID, FACEBOOK_APP_SECRET,
-                                          TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET_KEY)
-from simpleMVC.applicationEvents import ON_USER_CREATED, ON_APP_START, \
-    ON_RENDER
-from werkzeug.wrappers import BaseRequest, AcceptMixin, BaseResponse
-from werkzeug.utils import redirect
-from werkzeug.local import Local
-import datetime
 
 
 def login_required(func):
@@ -443,7 +435,7 @@ class TaskHandler(BaseUrlHandler):
         return Response()
 
 
-class SimpleMVCApp(object):
+class AnguineApp(object):
     """
     An interface to application.
     """

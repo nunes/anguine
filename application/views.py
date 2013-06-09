@@ -1,4 +1,4 @@
-from simpleMVC import TemplateView, login_required, utilString
+from anguine import TemplateView, login_required, utilString
 import logging
 
 """

@@ -15,7 +15,7 @@ from google.appengine.ext.db import polymodel
 
 from google.appengine.api import channel
 
-from simpleMVC import SimpleMVCApp, JSONHandler, GenericUser
+from anguine import AnguineApp, JSONHandler, GenericUser
 
 
 class BaseGame(polymodel.PolyModel):
@@ -39,7 +39,7 @@ class BaseGamePlayer(polymodel.PolyModel):
     
     
 
-class GameApp(SimpleMVCApp):
+class GameApp(AnguineApp):
     """
     Simple game application.
     """
@@ -96,7 +96,7 @@ class GameEventHandler(object):
     
     def send_message_player(self, player, message):
         try:
-            channel.send_message(player.player_channel_id, 
+            channel.send_message(player.player_channel_id,
                       str(message))
             
         except Exception:

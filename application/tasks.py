@@ -1,4 +1,4 @@
-from simpleMVC import TaskHandler
+from anguine import TaskHandler
 import logging
 
 

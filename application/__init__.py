@@ -7,11 +7,11 @@
     :license: BSD.
 """
 
-from languages import languages
-from simpleMVC import SimpleMVCApp
-from simpleMVC.applicationEvents import ON_USER_CREATED, ON_APP_START, ON_RENDER
-from simpleMVC.simpleMVCConstants import FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, \
+from anguine import AnguineApp
+from anguine.anguineConstants import FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, \
     TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET_KEY
+from anguine.applicationEvents import ON_USER_CREATED, ON_APP_START, ON_RENDER
+from languages import languages
 import logging
 import os
 import tasks
@@ -36,7 +36,7 @@ application_events_config = {  # ON_USER_CREATED: templateBoard.create_dashboard
                                  # ON_RENDER: render.render_url_handler
                                  }
 
-application = SimpleMVCApp(url_handler_modules=url_handler_modules,
+application = AnguineApp(url_handler_modules=url_handler_modules,
                             facebook_social_config=facebook_config,
                             twitter_social_config=twitter_config,
                             application_events_config=application_events_config,
