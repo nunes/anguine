@@ -8,8 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS -->
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/bootstrap.css" rel="stylesheet">
+<link href="/css/bootstrap-responsive.css" rel="stylesheet">
 <link href="/css/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -61,16 +61,26 @@
 		</div>
 	   {% endblock %}
 
-	<div class="container">
+	<div class="container main-content">
 	   {% block body %}
 	   {% endblock %}
-	   
-       {% block footer %}
-		<footer>
-		  <p>&copy; Anguine application template 2013</p>
-		</footer>
-       {% endblock %}
 	</div>
+	
+    {% block footer %}
+    <footer class="footer">
+       <p>&copy; Anguine application template 2013</p>
+       <p>Built with:</p>
+       <ul>
+         <li><a href="http://twitter.github.io/bootstrap/">bootstrap</a></li>
+         <li><a href="http://angularjs.org/">angular.js</a></li>
+         <li><a href="http://www.python.org/">python</a></li>
+         <li><a href="http://werkzeug.pocoo.org/">werkzeug</a></li>
+         <li><a href="http://wtforms.simplecodes.com/">wtforms</a></li>
+         <li><a href="https://developers.google.com/appengine/">google app engine</a></li>
+       </ul>
+    </footer>
+    {% endblock %}
+	
 
 	{%endblock%}
 

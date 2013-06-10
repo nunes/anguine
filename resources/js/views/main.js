@@ -1,4 +1,4 @@
-function MainCtrl($scope) {
+function WindowCtrl($scope) {
 
 	var tasks = $scope.tasks = [];
 

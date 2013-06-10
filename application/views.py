@@ -20,17 +20,6 @@ class Login(TemplateView):
             return {}
 
 
-class Main(TemplateView):
-    """
-    Main screen
-    """
-    urls = ['/main']
-
-    @login_required
-    def view(self, path=None):
-        return {}
-
-
 class Index(TemplateView):
     """
     Index screen
@@ -56,7 +45,18 @@ class Contact(TemplateView):
     """
     urls = ['/contact']
     def view(self):
-        return {'script': False}
+        return {}
+
+
+class Main(TemplateView):
+    """
+    Main screen
+    """
+    urls = ['/main']
+
+    @login_required
+    def view(self, path=None):
+        return {}
 
 
 class Sitemap(TemplateView):
