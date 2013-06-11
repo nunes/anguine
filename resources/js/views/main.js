@@ -1,4 +1,6 @@
-function WindowCtrl($scope) {
+//Window controller
+
+function WindowCtrl($scope, $http) {
 
 	var tasks = $scope.tasks = [];
 
@@ -20,15 +22,19 @@ function WindowCtrl($scope) {
 
 		var newTaskLabel = $scope.newTaskLabel.trim();
 
-		tasks.push({
+		var task = {
 			description : newTask,
 			label : newTaskLabel
+		}
+
+		$http.post('/rest/task/add', task).success(function() {
+			tasks.push(task);
+
+			$scope.newTask = '';
+			$scope.newTaskLabel = '';
+
+			$('#addTaskModal').modal('hide');
 		});
-
-		$scope.newTask = '';
-		$scope.newTaskLabel = '';
-
-		$('#addTaskModal').modal('hide');
 
 	};
 

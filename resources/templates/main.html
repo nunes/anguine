@@ -35,7 +35,7 @@
 		</tbody>
 	</table>
 
-	<!-- Modal Add BTC Address -->
+	<!-- Modal Add Task -->
 	<div id="addTaskModal" class="modal hide fade" tabindex="-1"
 		role="dialog" aria-labelledby="addTaskModalLabel" aria-hidden="true">
 		<form ng-submit="addTask()">
@@ -47,7 +47,7 @@
 			<div class="modal-body">
 				<fieldset>
 					<label>Task</label> <input type="text"
-						placeholder="Type task description..." ng-model="newTask">
+						placeholder="Type task description..." ng-model="newTask" required>
 					<span class="help-block">Type the task description.</span> <label>Label</label>
 					<input type="text" placeholder="Type a label for the task..."
 						ng-model="newTaskLabel"> <span class="help-block">Type

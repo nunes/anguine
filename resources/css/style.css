@@ -24,3 +24,7 @@ footer ul li {
 .main-content {
 	min-height: 30rem;
 }
+
+form {
+	margin-bottom: 0px;
+}
