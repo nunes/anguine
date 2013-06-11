@@ -1,19 +1,19 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-{% trans %}folderlinks: organize your links and webapps{% endtrans %}
+{% trans %}anguine: login screen{% endtrans %}
 {% endblock %}
 
 {% block body %}
 
 <h1>
-	login <a href="{{ url_for('index') }}">folderlinks.com</a>
+	login <a href="{{ url_for('index') }}">anguine</a>
 </h1>
 
 <div class="login_top_element">
 
 	<p>
-		{% trans %}Sign in using{% endtrans %} <a href="{{ url_for('index') }}">folderlinks.com</a> {% trans %}you preferred account:{% endtrans %}
+		{% trans %}Sign in using{% endtrans %} <a href="{{ url_for('index') }}">anguine</a> {% trans %}you preferred account:{% endtrans %}
 	</p>
 
 	<ul class="login">
@@ -30,56 +30,6 @@
 	</ul>
 
 </div>
-
-<div class="page login_page">
-	<div class="home_left_column">
-        <h2>{% trans %}Organize your favorite links and web applications in folders.{% endtrans %}</h2>
-        <p>{% trans %}Save your links on folderlinks and you will have them anywhere you have a web browser.{% endtrans %}</p>
-
-        <ul>
-            <li><strong> <a href="{{ url_for('main') }}">
-                 {% trans %}Organize in folders:{% endtrans %}</a></strong> {% trans %}Create folders and drag and drop applications on them.{% endtrans %}
-            </li>
-            
-            <li><strong><a href="{{ url_for('main') }}">
-                 {% trans %}Find your links quickly:{% endtrans %}</a></strong>
-                 {% trans %}Start typing and you will get a list of your links that match your search.{% endtrans %}
-            </li>
-                
-            <li><strong> <a href="{{ url_for('login') }}">
-                 {% trans %}Sign in:{% endtrans %}</a></strong> {% trans %}Using your{% endtrans %}
-                <a href="{{ url_for('login') }}">{% trans %}google or facebook account{% endtrans %}</a>.
-            </li>
-            
-            <li><strong><a href="{{ url_for('main') }}">
-                 {% trans %}Find and install existing applications:{% endtrans %}</a></strong> 
-                 {% trans %}Search existing web applications that other users have registered and install them in your dashboard.{% endtrans %}
-            </li>
-            
-            <li><strong><a href="{{ url_for('main') }}">
-                 {% trans %}Register new web applications:{% endtrans %}</a></strong>
-                 {% trans %}If you can't find an application, you only need the applications url to register and install it in your dashboard.{% endtrans %}
-            </li>
-            
-            <li><strong><a href="{{ url_for('main') }}">
-                 {% trans %}Import links from your browser:{% endtrans %}</a></strong>
-                 {% trans %}You can import your browser links on folderlinks.{% endtrans %}
-            </li>
-            
-            <li><strong><a href="{{ url_for('main') }}">
-                 {% trans %}Compatible with any html5 browser:{% endtrans %}</a></strong>
-                 {% trans %}Folderlinks does not depend on specific browser plugins or extensions. Use any html5 browser you like.{% endtrans %}
-            </li>
-        </ul>
-
-	</div>
-
-	<div class="login_right_column">
-		<img alt="desktop example" src="/img/desktop_example.png"></img>
-	</div>
-
-</div>
-
 
 {% endblock %}
 

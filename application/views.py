@@ -1,23 +1,22 @@
 from anguine import TemplateView, login_required, utilString
+from anguine.anguineConstants import ADMIN_MAIN
+from google.appengine.api import mail
+from wtforms.fields.core import StringField
+from wtforms.fields.simple import TextAreaField
+from wtforms.form import Form
 import logging
 
 """
 Application server side views
 """
-from wtforms.form import Form
-from wtforms.fields.simple import TextField, TextAreaField
-from wtforms.fields.core import StringField
-from google.appengine.api import mail
-from anguine.anguineConstants import ADMIN_MAIN
 
 class Login(TemplateView):
     """
-    Login screen
+    Login view
     """
     urls = ['/login']
 
     def view(self):
-        logging.info("view_login")
         if (self.current_user):
             return {'redirect': 'main'}
 
@@ -27,7 +26,7 @@ class Login(TemplateView):
 
 class Index(TemplateView):
     """
-    Index screen
+    Index view
     """
     urls = ['/']
 
@@ -37,7 +36,7 @@ class Index(TemplateView):
 
 class About(TemplateView):
     """
-    About screen
+    About view
     """
     urls = ['/about']
     script = False
@@ -48,7 +47,7 @@ class About(TemplateView):
 
 class Contact(TemplateView):
     """
-    Contact screen
+    Contact view
     """
     urls = ['/contact']
 
@@ -59,21 +58,22 @@ class Contact(TemplateView):
 
 
     def view(self):
-        return {}
+        form = Contact.ContactForm()
+        return {'form': form}
 
     def update(self):
         form = Contact.ContactForm(self.request.form)
 
         if form.validate():
 
-            message = mail.EmailMessage(sender=ADMIN_MAIN,
+            message = mail.EmailMessage(sender=form.email.data,
                                         subject="Contact form submit")
 
             message.to = ADMIN_MAIN
-            message.body = "From User: %s\r\nEmail: %s\r\nUser message: %s \r\n" % (
-                                                                                    form.name.data,
-                                                                                    form.email.data,
-                                                                                    form.message.data)
+            message.body = "From User: %s\nEmail: %s\nUser message: %s\n" % (
+                                form.name.data,
+                                form.email.data,
+                                form.message.data)
             
             logging.info("message: %s", message.body);
 
@@ -86,7 +86,7 @@ class Contact(TemplateView):
 
 class Main(TemplateView):
     """
-    Main screen
+    Main view
     """
     urls = ['/main']
 
