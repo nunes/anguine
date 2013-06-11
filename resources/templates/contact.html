@@ -1,7 +1,10 @@
-{% extends 'layout.html' %} {% block title %} {% trans %}Anguine:
-Contact{% endtrans %} {% endblock %} {% block body %}
+{% extends 'layout.html' %}
 
-<form>
+{% block title %} {% trans %}Anguine: Contact{% endtrans %} {% endblock %}
+
+{% block body %}
+
+<form name="contactForm" action="{{url_for('contact')}}" method="post" ng-controller="WindowCtrl">
 	<fieldset>
 		<h1>Contact</h1>
 
@@ -16,15 +19,15 @@ Contact{% endtrans %} {% endblock %} {% block body %}
 
 		<div class="control-group">
 			<div class="controls controls-row">
-				<input class="span2" type="text" placeholder="Email" id="inputEmail">
-				<input class="span3" type="text" placeholder="Name" id="inputName">
+				<input name="email" class="span2" type="email" placeholder="Email" id="inputEmail" ng-model="inputEmail" required>
+				<input name="name" class="span3" type="text" placeholder="Name" id="inputName" ng-model="inputName" required>
 			</div>
 		</div>
 
 		<div class="control-group">
 			<div class="controls">
 				<label class="control-label">Message</label>
-				<textarea class="span5" rows="12" id="inputMessage"
+				<textarea name="message" class="span5" rows="12" id="inputMessage"
 					placeholder="Message"></textarea>
 			</div>
 		</div>
@@ -36,7 +39,6 @@ Contact{% endtrans %} {% endblock %} {% block body %}
 		</div>
 	</fieldset>
 </form>
-
 
 {% endblock %}
 

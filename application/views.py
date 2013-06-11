@@ -4,6 +4,11 @@ import logging
 """
 Application server side views
 """
+from wtforms.form import Form
+from wtforms.fields.simple import TextField, TextAreaField
+from wtforms.fields.core import StringField
+from google.appengine.api import mail
+from anguine.anguineConstants import ADMIN_MAIN
 
 class Login(TemplateView):
     """
@@ -36,6 +41,7 @@ class About(TemplateView):
     """
     urls = ['/about']
     script = False
+
     def view(self):
         return {}
 
@@ -45,9 +51,37 @@ class Contact(TemplateView):
     Contact screen
     """
     urls = ['/contact']
-    script = False
+
+    class ContactForm(Form):
+        email = StringField('Email', default='')
+        name = StringField('Name', default='')
+        message = TextAreaField('Message', default='')
+
+
     def view(self):
         return {}
+
+    def update(self):
+        form = Contact.ContactForm(self.request.form)
+
+        if form.validate():
+
+            message = mail.EmailMessage(sender=ADMIN_MAIN,
+                                        subject="Contact form submit")
+
+            message.to = ADMIN_MAIN
+            message.body = "From User: %s\r\nEmail: %s\r\nUser message: %s \r\n" % (
+                                                                                    form.name.data,
+                                                                                    form.email.data,
+                                                                                    form.message.data)
+            
+            logging.info("message: %s", message.body);
+
+            message.send()
+
+            return {'redirect': 'contact'}
+        else:
+            return {'errors': form.errors}
 
 
 class Main(TemplateView):
