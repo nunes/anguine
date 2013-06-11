@@ -35,8 +35,9 @@ class About(TemplateView):
     About screen
     """
     urls = ['/about']
+    script = False
     def view(self):
-        return {'script': False}
+        return {}
 
 
 class Contact(TemplateView):
@@ -44,6 +45,7 @@ class Contact(TemplateView):
     Contact screen
     """
     urls = ['/contact']
+    script = False
     def view(self):
         return {}
 

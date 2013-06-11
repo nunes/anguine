@@ -346,13 +346,10 @@ class TemplateView(BaseUrlHandler):
             url = users.create_login_url(self.request.url)
             url_linktext = 'login / register'
 
-        if params.has_key('script'):
-            script = params['script']
-        else:
-            script = True
-
-        if script:
+        script = None
+        if not hasattr(self, 'script') or self.script:
             script = self.script_name
+        logging.error("script: %s", script)
 
         if params.has_key('processing'):
             processing = params['processing']
