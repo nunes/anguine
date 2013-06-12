@@ -6,9 +6,9 @@
 
     :copyright: (c) 2013 by Nuño Pereira
 """
-from anguine.applicationEvents import ON_USER_CREATED, ON_APP_START, ON_RENDER
 from anguine.anguineConstants import FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, \
     TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET_KEY
+from anguine.applicationEvents import ON_USER_CREATED, ON_APP_START, ON_RENDER
 from functools import wraps
 from google.appengine.api import channel, users
 from google.appengine.ext import db
@@ -562,7 +562,7 @@ class AnguineApp(object):
     def add_url_handler_module(self, url_handler_module):
         views = [view_class
                      for (name, view_class) in inspect.getmembers(url_handler_module, inspect.isclass)
-                     if (issubclass(view_class, TemplateView) or issubclass(view_class, JSONHandler)
+                        if (issubclass(view_class, TemplateView) or issubclass(view_class, JSONHandler)
                             or issubclass(view_class, TaskHandler))]
 
         for view in views:
@@ -590,11 +590,11 @@ class AnguineApp(object):
             else:
                 raise NotFound()
 
-        except NotFound, e:
+        except NotFound:
             logging.info("NotFound")
             resp = self.handle_not_found(req)
 
-        except HTTPException, e:
+        except HTTPException:
             logging.info("HTTPException")
             resp = self.handle_other_error(req)
 
