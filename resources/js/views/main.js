@@ -3,13 +3,15 @@
 function WindowCtrl($scope, $http) {
 
     var tasks = $scope.tasks = [];
-
+    
     $http.get('/rest/Task').success(function(data, status, headers, config) {
         _.each(data["list"]["Task"], function(element, index, list) {
             $scope.tasks.push(element);
         });
 
     });
+    
+    var user = null;
 
     $scope.newTask = '';
     $scope.newTaskLabel = '';
