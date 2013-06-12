@@ -28,6 +28,9 @@ handlers:
   upload: resources/robots.txt
   mime_type: text/plain
 
+- url: /rest/.*
+  script: rest_handler.application
+
 - url: /.*
   script: main.application
 

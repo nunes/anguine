@@ -11,7 +11,6 @@ from anguine import AnguineApp
 from anguine.anguineConstants import FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, \
     TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET_KEY
 from anguine.applicationEvents import ON_USER_CREATED, ON_APP_START, ON_RENDER
-from application import rest
 from languages import languages
 import logging
 import os
@@ -30,7 +29,7 @@ twitter_config = {
 
 version_str = 'v0.' + os.environ['CURRENT_VERSION_ID'][:os.environ['CURRENT_VERSION_ID'].index('.')]
 
-url_handler_modules = [views, tasks, rest]
+url_handler_modules = [views, tasks]
 
 application_events_config = {  # ON_USER_CREATED: templateBoard.create_dashboard,
                                  # ON_APP_START: start.initialize_app,

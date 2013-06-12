@@ -2,50 +2,64 @@
 
 function WindowCtrl($scope, $http) {
 
-	var tasks = $scope.tasks = [];
+    var tasks = $scope.tasks = [];
 
-	$scope.newTask = '';
-	$scope.newTaskLabel = '';
-	$scope.removeTask = '';
+    $http.get('/rest/Task').success(function(data, status, headers, config) {
+        _.each(data["list"]["Task"], function(element, index, list) {
+            $scope.tasks.push(element);
+        });
 
-	$scope.taskCount = $scope.tasks.length;
+    });
 
-	$scope.$watch('tasks', function() {
-		$scope.taskCount = $scope.tasks.length;
-	}, true);
+    $scope.newTask = '';
+    $scope.newTaskLabel = '';
+    $scope.removeTask = '';
 
-	$scope.addTask = function() {
-		var newTask = $scope.newTask.trim();
-		if (!newTask.length) {
-			return;
-		}
+    $scope.taskCount = $scope.tasks.length;
 
-		var newTaskLabel = $scope.newTaskLabel.trim();
+    $scope.$watch('tasks', function() {
+        $scope.taskCount = $scope.tasks.length;
+    }, true);
 
-		var task = {
-			description : newTask,
-			label : newTaskLabel
-		}
+    $scope.addTask = function() {
+        var newTask = $scope.newTask.trim();
+        if (!newTask.length) {
+            return;
+        }
 
-		$http.post('/rest/task/add', task).success(function() {
-			tasks.push(task);
+        var newTaskLabel = $scope.newTaskLabel.trim();
 
-			$scope.newTask = '';
-			$scope.newTaskLabel = '';
+        var task = {
+            description : newTask,
+            label : newTaskLabel
+        }
 
-			$('#addTaskModal').modal('hide');
-		});
+        $http.post('/rest/Task', {
+            Task : task
+        }).success(function(data, status, headers, config) {
+            
+            task["key"] = data;
+            
+            $scope.tasks.push(task);
+            
+            $scope.newTask = '';
+            $scope.newTaskLabel = '';
 
-	};
+            $('#addTaskModal').modal('hide');
+            
+        });
 
-	$scope.confirmRemoveTask = function() {
-		tasks.splice(tasks.indexOf($scope.removeTask), 1);
-		$('#deleteTaskModal').modal('hide');
+    };
 
-	}
+    $scope.confirmRemoveTask = function() {
+        $http.delete('/rest/Task/' + $scope.removeTask.key).success(function(data, status, headers, config) {
+            tasks.splice(tasks.indexOf($scope.removeTask), 1);
+            $('#deleteTaskModal').modal('hide');
+        });
+    }
 
-	$scope.openRemoveTask = function(task) {
-		$scope.removeTask = task;
-	}
+    $scope.openRemoveTask = function(task) {
+        $scope.removeTask = task;
+    }
 
 }
