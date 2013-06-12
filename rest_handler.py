@@ -1,5 +1,6 @@
 import os
 import sys
+import logging
 
 root = os.path.split(__file__)[0]
 sys.path.insert(0, os.path.join(root, 'lib'))
@@ -13,10 +14,12 @@ from google.appengine.ext import webapp
 class OwnerAuthorizer(rest.Authorizer):
 
     def can_read(self, dispatcher, model):
+        logging.warning("can_read, dispatcher.request: %s", dispatcher.request.cookies)
         if(model.owner != users.get_current_user()):
             dispatcher.not_found()
 
     def filter_read(self, dispatcher, models):
+        logging.warning("filter_read, dispatcher.request: %s", dispatcher.request.cookies)
         return self.filter_models(models)
 
     def check_query(self, dispatcher, query_expr, query_params):
