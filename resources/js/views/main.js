@@ -33,7 +33,8 @@ function WindowCtrl($scope, $http) {
 
         var task = {
             description : newTask,
-            label : newTaskLabel
+            label : newTaskLabel,
+            'owner': 'agtkZXZ-YW5ndWluZXIYCxILR2VuZXJpY1VzZXIYgICAgICAgAkM'
         }
 
         $http.post('/rest/Task', {

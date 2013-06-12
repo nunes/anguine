@@ -5,6 +5,7 @@ from wtforms.fields.core import StringField
 from wtforms.fields.simple import TextAreaField
 from wtforms.form import Form
 import logging
+from gaesessions import get_current_session
 
 """
 Application server side views
@@ -92,6 +93,9 @@ class Main(TemplateView):
 
     @login_required
     def view(self, path=None):
+        self.current_user
+        session = get_current_session()
+        logging.warning("session: %s", session.sid)
         return {}
 
 

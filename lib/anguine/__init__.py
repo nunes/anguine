@@ -30,6 +30,7 @@ import re
 import sys
 import utilModel
 import utilString
+from gaesessions import get_current_session
 
 
 def login_required(func):
@@ -230,8 +231,13 @@ class BaseUrlHandler(object):
                 if ((datetime.datetime.now() - self._current_user.last_login) > datetime.timedelta(days=1)):
                     self._current_user.last_login = datetime.datetime.now()
                     self._current_user.put()
+                    
                     logging.info("user login!!!!!!!!!")
 
+        if (self._current_user):
+            session = get_current_session()
+            session["current_user"] = self._current_user
+                    
         return self._current_user
 
     def render(self):
