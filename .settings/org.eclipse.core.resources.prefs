@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
-encoding//application/__init__.py=utf-8
-encoding//application/languages/__init__.py=utf-8
 encoding//lib/anguine/__init__.py=utf-8
 encoding//lib/anguine/gameMVC.py=utf-8
+encoding//template/__init__.py=utf-8
+encoding//template/languages/__init__.py=utf-8
 encoding/main.py=utf-8

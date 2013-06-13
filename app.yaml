@@ -29,7 +29,7 @@ handlers:
   mime_type: text/plain
 
 - url: /rest/.*
-  script: rest_handler.application
+  script: main.rest
 
 - url: /.*
   script: main.application

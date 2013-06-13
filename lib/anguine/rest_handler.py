@@ -1,16 +1,11 @@
-import os
-import sys
-
-root = os.path.split(__file__)[0]
-sys.path.insert(0, os.path.join(root, 'lib'))
-
+from gaesessions import get_current_session
 import rest
-from application import models
 from google.appengine.ext import webapp
 
-from gaesessions import get_current_session
-
 class OwnerAuthorizer(rest.Authorizer):
+    """
+    Owner authorizer for REST
+    """
 
     def can_read(self, dispatcher, model):
         session = get_current_session()
@@ -55,10 +50,15 @@ class OwnerAuthorizer(rest.Authorizer):
         return models
 
 
-application = webapp.WSGIApplication([('/rest/.*', rest.Dispatcher)])
-
-rest.Dispatcher.base_url = "/rest"
-
-rest.Dispatcher.add_models_from_module(models)
-
-rest.Dispatcher.authorizer = OwnerAuthorizer()
+class RestApplication(webapp.WSGIApplication):
+    """
+    Rest application handler
+    """
+    def __init__(self, models=None):
+        rest.Dispatcher.base_url = "/rest"
+        
+        rest.Dispatcher.add_models_from_module(models)
+        
+        rest.Dispatcher.authorizer = OwnerAuthorizer()
+        
+        webapp.WSGIApplication.__init__(self, [('/rest/.*', rest.Dispatcher)])

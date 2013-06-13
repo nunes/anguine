@@ -16,6 +16,8 @@ import logging
 import os
 import tasks
 import views
+from template import models
+from anguine.rest_handler import RestApplication
 
 facebook_config = {
                    FACEBOOK_APP_ID: "166096493488014",
@@ -43,3 +45,5 @@ application = AnguineApp(url_handler_modules=url_handler_modules,
                             languages_config=languages,
                             version=version_str
                             )
+
+rest = RestApplication(models)
