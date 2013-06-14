@@ -5,6 +5,12 @@
 
 	<h1>Main</h1>
 
+	<p>This is the main screen of your app. It is a
+		javascript/anguine.js application that uses a REST backend.</p>
+
+	<p>As an example, the main application here inserts task on a DB.
+		You can also delete those tasks.</p>
+
 	<button class="btn btn-primary" href="#addTaskModal" role="button"
 		data-toggle="modal">Add task</button>
 
@@ -26,8 +32,7 @@
 				<td>{{ task.label }}</td>
 				<td class="text-center">
 					<button class="btn btn-danger" href="#deleteTaskModal"
-						role="button" data-toggle="modal"
-						ng-click="openRemoveTask(task)">
+						role="button" data-toggle="modal" ng-click="openRemoveTask(task)">
 						<i class="icon-trash icon-white"></i>
 					</button>
 				</td>
@@ -86,6 +91,4 @@
 
 </div>
 
-{% endraw %}
-
-{% endblock %}
+{% endraw %} {% endblock %}
