@@ -1,10 +1,5 @@
-{% extends 'layout.html' %}
-
-{% block title %}
-{% trans %}anguine: template application{% endtrans %}
-{% endblock %}
-
-{% block body %}
+{% extends 'layout.html' %} {% block title %} {% trans %}anguine:
+template application{% endtrans %} {% endblock %} {% block body %}
 <div class="page home_page">
 	<div class="home_left_column">
 		<h1>
@@ -12,8 +7,28 @@
 		</h1>
 
 		<h2>{% trans %}Template application.{% endtrans %}</h2>
-		<p>{% trans %}Template application with angular.js + bootstrap and python app-engine backend.{% endtrans %}</p>
+		<p>{% trans %}Template application built with the following open
+			source projects: {% endtrans %}</p>
+		<ul>
+			<li><a href="http://twitter.github.io/bootstrap/">bootstrap</a></li>
+			<li><a href="http://angularjs.org/">angular.js</a></li>
+			<li><a href="http://underscorejs.org/">underscore.js</a></li>
+			<li><a href="http://www.python.org/">python</a></li>
+			<li><a href="http://werkzeug.pocoo.org/">werkzeug</a></li>
+			<li><a href="http://wtforms.simplecodes.com/">wtforms</a></li>
+			<li><a href="https://developers.google.com/appengine/">google
+					app engine</a></li>
+			<li><a href="https://code.google.com/p/appengine-rest-server/">appengine-rest-server</a></li>
+			<li><a href="https://github.com/dound/gae-sessions">gae-sessions</a></li>
+		</ul>
 
+		<p>Anguine is template application. It is meant for building
+			applications on a certain way. It is not a framework.</p>
+
+		<p>Based on a mixed architecture: both server side and client side
+			MVC. Client side is intended to build a complete web application and
+			has access to data through REST. Server side templating is intented
+			for publishing meaningful urls and search engine indexing.</p>
 	</div>
 </div>
 
