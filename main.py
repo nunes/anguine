@@ -19,5 +19,3 @@ import template
 application = template.application
 
 rest = template.rest
-
-#TEST
